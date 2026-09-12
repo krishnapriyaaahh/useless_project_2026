@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none">
+  <!-- Body shaking -->
+  <ellipse cx="50" cy="86" rx="28" ry="22" fill="#f97316"/>
+  <!-- Head -->
+  <circle cx="50" cy="52" r="30" fill="#fde68a"/>
+  <!-- Wide panic eyes -->
+  <circle cx="37" cy="49" r="8" fill="white"/>
+  <circle cx="63" cy="49" r="8" fill="white"/>
+  <circle cx="37" cy="49" r="5" fill="#7c2d12"/>
+  <circle cx="63" cy="49" r="5" fill="#7c2d12"/>
+  <circle cx="38.5" cy="47.5" r="2" fill="white"/>
+  <circle cx="64.5" cy="47.5" r="2" fill="white"/>
+  <!-- Very furrowed brows -->
+  <path d="M28 38 Q37 33 45 38" stroke="#92400e" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M55 38 Q63 33 72 38" stroke="#92400e" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Open mouth worry -->
+  <path d="M38 67 Q50 75 62 67" stroke="#92400e" stroke-width="2.5" stroke-linecap="round" fill="#fca5a5" opacity="0.6"/>
+  <!-- Multiple sweat drops -->
+  <ellipse cx="73" cy="35" rx="2.5" ry="3.5" fill="#93c5fd" opacity="0.9"/>
+  <ellipse cx="78" cy="44" rx="2" ry="3" fill="#93c5fd" opacity="0.7"/>
+  <ellipse cx="24" cy="40" rx="2" ry="3" fill="#93c5fd" opacity="0.7"/>
+  <!-- Headphones (slightly askew) -->
+  <path d="M22 52 Q20 35 50 33 Q80 35 78 52" stroke="#92400e" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <rect x="18" y="49" width="8" height="12" rx="4" fill="#92400e"/>
+  <rect x="74" y="49" width="8" height="12" rx="4" fill="#92400e"/>
+</svg>

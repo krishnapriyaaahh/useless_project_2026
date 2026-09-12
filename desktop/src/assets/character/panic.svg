@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none">
+  <!-- Body tilted panic -->
+  <ellipse cx="50" cy="88" rx="30" ry="22" fill="#ef4444"/>
+  <!-- Head enlarged -->
+  <circle cx="50" cy="50" r="33" fill="#fde68a"/>
+  <!-- VERY wide eyes -->
+  <circle cx="36" cy="47" r="10" fill="white"/>
+  <circle cx="64" cy="47" r="10" fill="white"/>
+  <circle cx="36" cy="48" r="6" fill="#450a0a"/>
+  <circle cx="64" cy="48" r="6" fill="#450a0a"/>
+  <circle cx="38" cy="45.5" r="2.5" fill="white"/>
+  <circle cx="66" cy="45.5" r="2.5" fill="white"/>
+  <!-- Panic brows way up -->
+  <path d="M25 33 Q36 27 46 33" stroke="#92400e" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M54 33 Q64 27 75 33" stroke="#92400e" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- Open screaming mouth -->
+  <ellipse cx="50" cy="68" rx="12" ry="9" fill="#7c2d12"/>
+  <ellipse cx="50" cy="66" rx="10" ry="6" fill="#450a0a"/>
+  <!-- Lots of sweat -->
+  <ellipse cx="78" cy="30" rx="3" ry="4.5" fill="#93c5fd"/>
+  <ellipse cx="83" cy="42" rx="2.5" ry="3.5" fill="#93c5fd"/>
+  <ellipse cx="20" cy="35" rx="2.5" ry="3.5" fill="#93c5fd"/>
+  <ellipse cx="16" cy="46" rx="2" ry="3" fill="#93c5fd"/>
+  <!-- Headphones flying off -->
+  <path d="M20 48 Q18 30 50 28 Q82 30 80 48" stroke="#92400e" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="4 2"/>
+  <rect x="16" y="44" width="8" height="12" rx="4" fill="#92400e" transform="rotate(-15 20 50)"/>
+  <rect x="76" y="44" width="8" height="12" rx="4" fill="#92400e" transform="rotate(15 80 50)"/>
+  <!-- Exclamation marks -->
+  <text x="85" y="25" font-size="14" fill="#ef4444" font-weight="bold">!</text>
+  <text x="5" y="25" font-size="14" fill="#ef4444" font-weight="bold">!</text>
+</svg>

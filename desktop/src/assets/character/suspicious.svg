@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none">
+  <!-- Body -->
+  <ellipse cx="50" cy="85" rx="28" ry="22" fill="#fbbf24"/>
+  <!-- Head -->
+  <circle cx="50" cy="52" r="30" fill="#fde68a"/>
+  <!-- Eyes shifted right — suspicious look -->
+  <circle cx="38" cy="50" r="7" fill="white"/>
+  <circle cx="62" cy="50" r="7" fill="white"/>
+  <circle cx="41" cy="50" r="4" fill="#92400e"/>
+  <circle cx="65" cy="50" r="4" fill="#92400e"/>
+  <!-- Pupils looking right -->
+  <circle cx="43" cy="49" r="1.5" fill="white"/>
+  <circle cx="67" cy="49" r="1.5" fill="white"/>
+  <!-- One eyebrow raised -->
+  <path d="M33 40 Q38 37 43 40" stroke="#92400e" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M57 38 Q62 34 67 38" stroke="#92400e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- Slight frown -->
+  <path d="M41 65 Q50 63 59 65" stroke="#92400e" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Headphones -->
+  <path d="M22 52 Q20 35 50 33 Q80 35 78 52" stroke="#92400e" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <rect x="18" y="49" width="8" height="12" rx="4" fill="#92400e"/>
+  <rect x="74" y="49" width="8" height="12" rx="4" fill="#92400e"/>
+</svg>

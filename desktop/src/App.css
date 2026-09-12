@@ -1,0 +1,1780 @@
+/* ═══════════════════════════════════════════════════════════════════
+   AMMA RADAR™ — Complete Stylesheet
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Reset & base ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* ── Loading screen ───────────────────────────────────────────────── */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: rgba(15, 15, 25, 0.95);
+  border-radius: 16px;
+  color: white;
+}
+.loading-text {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fbbf24;
+}
+.loading-sub {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+/* ── Game Boy Console Chassis ───────────────────────────────────────── */
+.gameboy-console {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ede7d8 0%, #ded4c0 100%);
+  border-radius: 18px 18px 30px 18px;
+  border: 2px solid #c7bca6;
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.65),
+    inset 0 2px 3px rgba(255, 255, 255, 0.8),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Press Start 2P', monospace;
+  user-select: none;
+  cursor: default;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Reset flash animation on whole console */
+.console-reset-flash {
+  animation: consoleFlash 0.5s ease-out;
+}
+@keyframes consoleFlash {
+  0%   { filter: brightness(1.7); }
+  50%  { filter: brightness(1.3); }
+  100% { filter: brightness(1); }
+}
+
+/* ── Top Console Header Bar ────────────────────────────────────────── */
+.gameboy-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px 4px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.15);
+  cursor: grab;
+}
+.gameboy-top-bar:active { cursor: grabbing; }
+
+.power-switch-housing {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.power-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6b7280;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.power-led-on {
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+}
+.power-label {
+  font-size: 6px;
+  font-weight: 700;
+  color: #78716c;
+  letter-spacing: 0.5px;
+}
+
+.console-drag-handle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.retro-screw {
+  font-size: 8px;
+  color: #a8a29e;
+  font-weight: 900;
+}
+.console-model-tag {
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #57534e;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.top-window-controls {
+  display: flex;
+  gap: 4px;
+}
+.retro-header-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid #a8a29e;
+  background: #d6cfbe;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #44403c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.1s;
+}
+.retro-header-btn:active {
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
+  transform: translateY(1px);
+}
+.retro-header-close:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #b91c1c;
+}
+
+/* ── Screen Bezel (Game Boy Curved Dark Frame) ─────────────────────── */
+.gameboy-bezel {
+  background: #282e38;
+  border-radius: 10px 10px 24px 10px;
+  margin: 6px 10px 4px;
+  padding: 6px 8px 8px;
+  border: 2px solid #1c212a;
+  box-shadow:
+    inset 0 3px 6px rgba(0, 0, 0, 0.7),
+    0 1px 2px rgba(255, 255, 255, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+.bezel-header-strip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.bezel-stripe {
+  height: 2px;
+  flex: 1;
+}
+.stripe-magenta { background: #e11d48; }
+.stripe-blue    { background: #2563eb; }
+.bezel-text {
+  font-size: 5px;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.bezel-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  padding: 0 2px;
+}
+.battery-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.battery-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #475569;
+}
+.battery-active {
+  background: #ef4444;
+  box-shadow: 0 0 5px #ef4444;
+}
+.battery-text {
+  font-size: 5px;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+/* ── The Retro Game Boy LCD Screen ─────────────────────────────────── */
+.gameboy-screen {
+  position: relative;
+  background: linear-gradient(180deg, #7dd3fc 0%, #bae6fd 60%, #86efac 100%);
+  border: 2px solid #0f172a;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 3px 8px rgba(0, 0, 0, 0.45),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 5px 6px;
+  height: 220px;
+  justify-content: space-between;
+}
+
+/* Scanline CRT overlay */
+.screen-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.07),
+    rgba(0, 0, 0, 0.07) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 10;
+}
+
+/* Reset Banner */
+.retro-reset-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fbbf24;
+  color: #1c1917;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+  padding: 6px 10px;
+  font-size: 9px;
+  font-weight: 900;
+  white-space: nowrap;
+  z-index: 25;
+  animation: bannerPop 0.6s ease-out;
+}
+@keyframes bannerPop {
+  0%   { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
+  50%  { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* ── Retro HUD HP Meter ────────────────────────────────────────────── */
+.retro-hud-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 3px 5px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.retro-hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.retro-hud-title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.retro-pixel-heart {
+  font-size: 9px;
+  line-height: 1;
+}
+.heart-beating {
+  animation: heartThrob 0.4s ease-in-out infinite alternate;
+}
+@keyframes heartThrob {
+  from { transform: scale(1); }
+  to   { transform: scale(1.3); }
+}
+
+.retro-hud-tag {
+  font-size: 6px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.retro-hud-pct {
+  font-size: 7px;
+  font-weight: 900;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.retro-hud-badges {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.retro-hud-level {
+  font-size: 5px;
+  font-weight: 900;
+  padding: 1px 3px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  text-transform: uppercase;
+  font-family: 'Press Start 2P', monospace;
+}
+.retro-hud-level.level-0 {
+  background: #dcfce7;
+  color: #15803d;
+}
+.retro-hud-level.level-1 {
+  background: #fef08a;
+  color: #854d0e;
+}
+.retro-hud-level.level-2 {
+  background: #fed7aa;
+  color: #c2410c;
+}
+.retro-hud-level.level-3 {
+  background: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 0 5px #ef4444;
+}
+.retro-hud-level.level-4 {
+  background: #dc2626;
+  color: #ffffff;
+  box-shadow: 0 0 8px #dc2626;
+  animation: maxPulse 0.3s ease-in-out infinite alternate;
+}
+.level-max-pulse {
+  animation: maxPulse 0.4s ease-in-out infinite alternate;
+}
+@keyframes maxPulse {
+  from { transform: scale(1); filter: brightness(1); }
+  to { transform: scale(1.06); filter: brightness(1.25); }
+}
+
+.retro-hud-calls {
+  font-size: 5px;
+  font-weight: 900;
+  padding: 1px 3px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.08);
+  color: #334155;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: 'Press Start 2P', monospace;
+}
+.retro-hud-calls.calls-active {
+  background: #fecdd3;
+  color: #be123c;
+  border-color: #f43f5e;
+  font-weight: 900;
+}
+
+/* Inline Reset Pill */
+.retro-hud-reset-pill {
+  background: #be123c;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5px;
+  padding: 2px 4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #000;
+  transition: all 0.1s;
+}
+.retro-hud-reset-pill:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+/* 8-Bit HP Segmented Bar */
+.retro-hp-bar {
+  display: flex;
+  gap: 2px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1px;
+  border-radius: 2px;
+  border: 1px solid #0f172a;
+}
+.retro-hp-block {
+  flex: 1;
+  height: 100%;
+  border-radius: 1px;
+}
+.retro-hp-block.empty {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* MAX ANGRINESS REACHED banner */
+.retro-max-banner {
+  background: #dc2626;
+  color: #ffffff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5px;
+  font-weight: 900;
+  text-align: center;
+  padding: 2px 4px;
+  margin-top: 2px;
+  border: 1px solid #7f1d1d;
+  box-shadow: 0 0 6px rgba(220, 38, 38, 0.6);
+  border-radius: 2px;
+  letter-spacing: 0.4px;
+}
+
+/* Mic Volume sound track */
+.retro-mic-subrow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1px;
+}
+.retro-mic-tag {
+  font-size: 5px;
+  color: #1e293b;
+  font-weight: 700;
+}
+.retro-mic-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.retro-mic-fill {
+  height: 100%;
+  transition: width 0.08s ease-out;
+}
+.retro-mic-num {
+  font-size: 5px;
+  color: #0f172a;
+  min-width: 18px;
+  text-align: right;
+}
+
+/* ── Platformer Stage with 8-Bit Pixel Character ───────────────────── */
+.retro-game-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+  z-index: 2;
+}
+
+/* Sky clouds & sun */
+.retro-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  pointer-events: none;
+}
+.pixel-cloud {
+  position: absolute;
+  width: 24px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 5px;
+  opacity: 0.85;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+.cloud-1 { top: 6px; left: 8px; animation: cloudFloat 12s linear infinite alternate; }
+.cloud-2 { top: 14px; right: 10px; animation: cloudFloat 16s linear infinite alternate-reverse; }
+@keyframes cloudFloat {
+  from { transform: translateX(0); }
+  to   { transform: translateX(15px); }
+}
+
+.pixel-sun {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  width: 14px;
+  height: 14px;
+  background: #fef08a;
+  border: 1px solid #ca8a04;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #fef08a;
+}
+
+/* Floating Blocks */
+.retro-floating-blocks {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  display: flex;
+  gap: 2px;
+}
+.retro-block {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #78350f;
+  box-shadow: 1px 1px 0 #000;
+  font-size: 6px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.block-q {
+  background: #f59e0b;
+  color: #fff;
+  animation: blockBounce 2s ease-in-out infinite alternate;
+}
+@keyframes blockBounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-2px); }
+}
+.block-brick {
+  background: #b45309;
+}
+
+/* Ground Platform */
+.retro-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.pixel-grass {
+  height: 3px;
+  background: #22c55e;
+  border-top: 1px solid #15803d;
+}
+.pixel-dirt {
+  flex: 1;
+  background: #854d0e;
+  border-top: 1px solid #713f12;
+}
+
+/* Pixel Sprite Character Wrapper */
+.pixel-sprite-wrapper {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.4));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: spriteIdle 1.8s ease-in-out infinite alternate;
+}
+@keyframes spriteIdle {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-3px); }
+}
+
+.sprite-worried {
+  animation: spriteShake 0.4s ease-in-out infinite alternate !important;
+}
+@keyframes spriteShake {
+  from { transform: translateX(-2px); }
+  to   { transform: translateX(2px); }
+}
+
+.sprite-panic {
+  animation: spritePanicShake 0.15s ease-in-out infinite alternate !important;
+}
+@keyframes spritePanicShake {
+  from { transform: translate(-3px, -2px) scale(1.08); }
+  to   { transform: translate(3px, 2px) scale(1.12); }
+}
+
+.sprite-emergency {
+  animation: spriteEmergencyFlash 0.12s ease-in-out infinite alternate !important;
+}
+@keyframes spriteEmergencyFlash {
+  from { transform: translate(-4px, -3px) scale(1.15); filter: drop-shadow(0 0 8px #ef4444); }
+  to   { transform: translate(4px, 3px) scale(1.18); filter: drop-shadow(0 0 12px #ef4444); }
+}
+
+.pixel-sprite-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Emotes */
+.pixel-emote {
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+  animation: emoteFloat 1s ease-in-out infinite alternate;
+}
+.emote-music { color: #818cf8; text-shadow: 1px 1px 0 #000; }
+.emote-alert { color: #f59e0b; text-shadow: 1px 1px 0 #000; }
+.emote-sweat { font-size: 11px; }
+.emote-panic { color: #ef4444; font-size: 12px; text-shadow: 1px 1px 0 #fff; }
+
+@keyframes emoteFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-4px); }
+}
+
+/* Flying Pixel Chappal */
+.pixel-chappal-warning {
+  position: absolute;
+  top: -12px;
+  left: -8px;
+  font-size: 18px;
+  animation: chappalDive 0.35s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));
+}
+@keyframes chappalDive {
+  from { transform: rotate(-25deg) translateY(0); }
+  to   { transform: rotate(30deg) translateY(-5px); }
+}
+
+/* 8-Bit Equalizer dancing with mic volume */
+.pixel-sound-eq {
+  position: absolute;
+  bottom: 12px;
+  right: 6px;
+  display: flex;
+  gap: 1px;
+  align-items: flex-end;
+  height: 12px;
+}
+.pixel-eq-bar {
+  width: 2px;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 1px;
+  transition: height 0.08s ease;
+}
+.pixel-eq-bar.active {
+  height: 100%;
+}
+
+/* ── 8-Bit RPG Dialogue Box ────────────────────────────────────────── */
+.retro-dialogue-box {
+  position: relative;
+  background: #fffdfa;
+  border: 2px solid #0f172a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  padding: 4px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 5;
+  min-height: 46px;
+}
+
+.retro-dialogue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.retro-dialogue-speaker {
+  font-size: 6px;
+  font-weight: 900;
+  color: #be123c;
+  letter-spacing: 0.5px;
+}
+.retro-dialogue-meta {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.retro-level-pill {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5px;
+  font-weight: 900;
+  padding: 1px 3px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  text-transform: uppercase;
+}
+.retro-level-pill.level-0 {
+  background: #dcfce7;
+  color: #15803d;
+}
+.retro-level-pill.level-1 {
+  background: #fef08a;
+  color: #854d0e;
+}
+.retro-level-pill.level-2 {
+  background: #fed7aa;
+  color: #c2410c;
+}
+.retro-level-pill.level-3 {
+  background: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 0 5px #ef4444;
+}
+.retro-level-pill.level-4 {
+  background: #dc2626;
+  color: #ffffff;
+  box-shadow: 0 0 8px #dc2626;
+  animation: maxPulse 0.3s ease-in-out infinite alternate;
+}
+
+.retro-call-badge {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5px;
+  font-weight: 900;
+  background: #fecdd3;
+  color: #9f1239;
+  padding: 1px 3px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.retro-call-badge.call-badge-active {
+  background: #f43f5e;
+  color: #ffffff;
+  box-shadow: 0 0 4px #f43f5e;
+}
+
+.retro-dialogue-body {
+  font-family: 'VT323', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.3px;
+}
+
+.retro-dialogue-sub {
+  font-family: 'VT323', monospace;
+  font-size: 11px;
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.retro-dialogue-call-count {
+  font-family: 'VT323', monospace;
+  font-size: 11px;
+  color: #78350f;
+  background: #fef3c7;
+  padding: 1px 4px;
+  border-radius: 2px;
+  border-left: 2px solid #f59e0b;
+}
+.retro-dialogue-call-count strong {
+  color: #b45309;
+  font-size: 12px;
+}
+.retro-dialogue-call-count .max-tag {
+  color: #dc2626;
+  font-weight: 900;
+  margin-left: 3px;
+}
+
+.retro-dialogue-transcript {
+  font-family: 'VT323', monospace;
+  font-size: 11px;
+  color: #475569;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.retro-cursor-blink {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 6px;
+  color: #be123c;
+  animation: cursorBlink 0.6s steps(2, start) infinite;
+}
+@keyframes cursorBlink {
+  to { visibility: hidden; }
+}
+
+/* ── Retro 8-Bit Alert Popups ─────────────────────────────────────── */
+.alert-container {
+  position: absolute;
+  top: 28px;
+  left: 6px;
+  right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  z-index: 50;
+  pointer-events: none;
+}
+.alert-bubble {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5.5px;
+  line-height: 1.3;
+  padding: 4px 6px;
+  border-radius: 3px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
+  animation: retroAlertDrop 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  pointer-events: auto;
+}
+@keyframes retroAlertDrop {
+  from { transform: translateY(-12px) scale(0.9); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+.alert-icon {
+  font-size: 8px;
+  flex-shrink: 0;
+}
+.alert-text {
+  flex: 1;
+  word-break: break-word;
+  letter-spacing: 0.3px;
+}
+
+/* ── Lower Console Controls Deck (D-Pad, Speaker, A/B Buttons) ─────── */
+.gameboy-controls-deck {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 6px;
+}
+
+/* Directional D-Pad */
+.gameboy-dpad {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.dpad-btn {
+  position: absolute;
+  background: #292524;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+.dpad-up {
+  top: 0; left: 20px; width: 20px; height: 22px; border-radius: 4px 4px 0 0;
+}
+.dpad-down {
+  bottom: 0; left: 20px; width: 20px; height: 22px; border-radius: 0 0 4px 4px;
+}
+.dpad-left {
+  top: 20px; left: 0; width: 22px; height: 20px; border-radius: 4px 0 0 4px;
+}
+.dpad-right {
+  top: 20px; right: 0; width: 22px; height: 20px; border-radius: 0 4px 4px 0;
+}
+.dpad-center {
+  top: 20px; left: 20px; width: 20px; height: 20px;
+  background: #292524;
+  border-radius: 50%;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.8);
+}
+
+/* Speaker Grille (diagonal oval vents) */
+.gameboy-speaker {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  transform: rotate(-25deg);
+  margin-top: 10px;
+}
+.speaker-slot {
+  width: 4px;
+  height: 22px;
+  background: #292524;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8), 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+/* Action Buttons A & B */
+.gameboy-action-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  transform: rotate(-25deg);
+  margin-right: 4px;
+}
+
+.action-btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.45),
+    inset 0 2px 2px rgba(255, 255, 255, 0.4);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.action-btn:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.45),
+    inset 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Button B (Test) */
+.btn-b {
+  background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+/* Button A (RESET) */
+.btn-a {
+  background: linear-gradient(135deg, #e11d48 0%, #9f1239 100%);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+/* Button A Active Glow when intensity > 0 */
+.btn-a-active {
+  background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
+  box-shadow:
+    0 0 14px #f43f5e,
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 2px 3px rgba(255, 255, 255, 0.7) !important;
+  animation: buttonPulse 1s ease-in-out infinite alternate;
+}
+@keyframes buttonPulse {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+
+.action-btn-label {
+  font-size: 6px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #44403c;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+.label-a-active {
+  color: #be123c;
+  font-weight: 900;
+}
+
+/* ── Bottom Deck: Rubber Pill Buttons (SELECT & START) ──────────────── */
+.gameboy-bottom-deck {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 2px 0 10px;
+}
+
+.pill-btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.pill-btn {
+  width: 32px;
+  height: 8px;
+  background: #78716c;
+  border-radius: 6px;
+  border: 1px solid #44403c;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 2px 3px rgba(0, 0, 0, 0.3);
+  transform: rotate(-25deg);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.pill-btn:active, .pill-btn-active {
+  transform: rotate(-25deg) translateY(1px);
+  background: #f59e0b;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.pill-label {
+  font-size: 6px;
+  font-weight: 900;
+  color: #78716c;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Retro Error Banner */
+.retro-error-banner {
+  background: #ef4444;
+  color: #fff;
+  border: 1px solid #7f1d1d;
+  font-size: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  margin: 0 10px 6px;
+  border-radius: 4px;
+}
+.retro-demo-btn {
+  background: #fbbf24;
+  color: #000;
+  border: 1px solid #000;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5.5px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+/* ── Listening indicator ──────────────────────────────────────────── */
+.listening-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+}
+.listening-dot {
+  font-size: 10px;
+  line-height: 1;
+}
+.listening-dot.pulse {
+  animation: dotPulse 1.2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+.listening-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.ai-badge {
+  font-size: 8px;
+  font-weight: 700;
+  background: rgba(251,191,36,0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(251,191,36,0.4);
+  border-radius: 4px;
+  padding: 1px 5px;
+  letter-spacing: 1px;
+  margin-left: 4px;
+}
+
+/* ── Alert popups ─────────────────────────────────────────────────── */
+.alert-container {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: none;
+  z-index: 20;
+}
+.alert-bubble {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.alert-icon { font-size: 13px; }
+.alert-text { color: white; letter-spacing: 0.5px; }
+
+.animate-alert-in {
+  animation: alertSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes alertSlideIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Emergency bubbles ────────────────────────────────────────────── */
+.emergency-bubbles {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.emg-bubble {
+  position: absolute;
+  font-size: 14px;
+  animation: floatBubble 1s ease-in-out infinite alternate;
+}
+.emg-bubble-0 { top: 10%; left: 5%;  animation-delay: 0s;    }
+.emg-bubble-1 { top: 20%; right: 5%; animation-delay: 0.2s;  }
+.emg-bubble-2 { top: 5%;  left: 40%; animation-delay: 0.4s;  }
+.emg-bubble-3 { top: 35%; left: 2%;  animation-delay: 0.1s;  }
+.emg-bubble-4 { top: 40%; right: 2%; animation-delay: 0.3s;  }
+@keyframes floatBubble {
+  from { transform: translateY(0) rotate(-5deg); opacity: 0.8; }
+  to   { transform: translateY(-8px) rotate(5deg); opacity: 1; }
+}
+
+/* ── Status sub flicker ───────────────────────────────────────────── */
+.animate-flicker {
+  animation: flicker 0.8s ease-in-out infinite alternate;
+}
+@keyframes flicker {
+  from { opacity: 0.7; }
+  to   { opacity: 1; }
+}
+
+/* ── Settings panel ───────────────────────────────────────────────── */
+.settings-panel {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 18, 0.97);
+  border-radius: 16px;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fbbf24;
+}
+.settings-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.settings-row-col {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+}
+.settings-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.settings-val {
+  font-weight: 700;
+  color: #fbbf24;
+}
+.settings-input {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  padding: 5px 9px;
+  width: 130px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.settings-input:focus {
+  border-color: rgba(251,191,36,0.5);
+}
+.settings-slider {
+  width: 100%;
+  accent-color: #fbbf24;
+  cursor: pointer;
+}
+.toggle-btn {
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.15s ease;
+}
+.toggle-btn.on  { background: #4ade80; color: #052e16; }
+.toggle-btn.off { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
+.settings-footer {
+  padding: 10px 14px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.settings-save-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+  color: #1a0a00;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: opacity 0.2s;
+}
+.settings-save-btn:hover { opacity: 0.88; }
+.settings-privacy {
+  text-align: center;
+  font-size: 9px;
+  color: rgba(255,255,255,0.2);
+  padding: 6px 14px 10px;
+  letter-spacing: 0.5px;
+}
+
+/* ── Detection Mode Selector ── */
+.detection-mode-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.detection-mode-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.detection-mode-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.detection-mode-card.active {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.6);
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.15);
+}
+.mode-card-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.mode-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mode-card-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+.detection-mode-card.active .mode-card-title {
+  color: #fbbf24;
+}
+.mode-card-sub {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.2;
+}
+
+/* ── Demo controls ────────────────────────────────────────────────── */
+.demo-controls {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 8px 10px 10px;
+  z-index: 1;
+}
+.demo-header {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(251,191,36,0.6);
+  text-align: center;
+  margin-bottom: 7px;
+}
+.demo-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.demo-row {
+  display: flex;
+  gap: 5px;
+}
+.demo-row .demo-btn { flex: 1; }
+
+.demo-btn {
+  border: none;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+.demo-btn:active { transform: scale(0.96); }
+.demo-btn-primary {
+  background: rgba(251,191,36,0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(251,191,36,0.3);
+}
+.demo-btn-primary:hover { background: rgba(251,191,36,0.3); }
+.demo-btn-small {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.demo-btn-small:hover { background: rgba(255,255,255,0.13); }
+.demo-btn-warn {
+  background: rgba(249,115,22,0.2);
+  color: #f97316;
+  border: 1px solid rgba(249,115,22,0.3);
+}
+.demo-btn-warn:hover { background: rgba(249,115,22,0.3); }
+.demo-btn-danger {
+  background: rgba(239,68,68,0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+.demo-btn-danger:hover { background: rgba(239,68,68,0.3); }
+.demo-btn-reset {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.demo-intensity-preview {
+  text-align: center;
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 6px;
+}
+.demo-intensity-preview strong { color: rgba(255,255,255,0.7); }
+.demo-escalation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  margin-top: 6px;
+  font-size: 11px;
+}
+.demo-arrow {
+  font-size: 8px;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ── AI offline banner ────────────────────────────────────────────── */
+.ai-offline-banner {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+}
+.ai-offline-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(239,68,68,0.8);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+/* ── State-specific widget borders ───────────────────────────────── */
+.radar-widget {
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ADDITIONS: Mic activity, debug panel, settings tabs, tag editor
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Mic volume bar (in header) ───────────────────────────────────── */
+.mic-vol-bar {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  margin-left: 4px;
+}
+.mic-vol-seg {
+  width: 3px;
+  height: 8px;
+  border-radius: 1px;
+  background: rgba(255,255,255,0.1);
+  transition: background 0.1s ease;
+}
+.mic-vol-seg.active {
+  background: #4ade80;
+}
+
+/* ── Debug panel ──────────────────────────────────────────────────── */
+.debug-panel {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 8px 10px 6px;
+  z-index: 1;
+  background: rgba(0,0,0,0.3);
+}
+.debug-title {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.debug-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+  gap: 8px;
+}
+.debug-row-col {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.debug-key {
+  font-size: 9px;
+  color: rgba(255,255,255,0.3);
+  white-space: nowrap;
+  min-width: 80px;
+}
+.debug-val {
+  font-size: 9px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Consolas', monospace;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 140px;
+}
+.debug-transcript {
+  font-size: 9px;
+  color: rgba(255,255,255,0.6);
+  font-family: 'Consolas', monospace;
+  font-style: italic;
+  word-break: break-all;
+  max-height: 32px;
+  overflow: hidden;
+}
+.debug-green  { color: #4ade80 !important; }
+.debug-orange { color: #fb923c !important; }
+.debug-red    { color: #ef4444 !important; }
+.debug-dim    { color: rgba(255,255,255,0.25) !important; }
+
+.debug-vol-bar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.debug-vol-seg {
+  width: 4px;
+  height: 8px;
+  border-radius: 1px;
+  background: rgba(255,255,255,0.08);
+}
+.debug-vol-seg.active { background: #4ade80; }
+.debug-vol-num {
+  font-size: 8px;
+  color: rgba(255,255,255,0.3);
+  margin-left: 4px;
+  font-family: monospace;
+}
+
+/* ── Settings tabs ────────────────────────────────────────────────── */
+.settings-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.settings-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 7px 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-bottom: 2px solid transparent;
+}
+.settings-tab:hover { color: rgba(255,255,255,0.7); }
+.settings-tab.active {
+  color: #fbbf24;
+  border-bottom-color: #fbbf24;
+}
+
+/* ── Settings section title ───────────────────────────────────────── */
+.settings-section-title {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* ── Settings full-width input ────────────────────────────────────── */
+.settings-input-full {
+  width: 100%;
+}
+.settings-hint {
+  font-size: 9px;
+  color: rgba(255,255,255,0.25);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+.settings-hint-warn {
+  color: rgba(251,146,60,0.7);
+}
+.settings-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.settings-link-btn {
+  background: none;
+  border: none;
+  color: rgba(251,191,36,0.6);
+  font-size: 9px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+.settings-link-btn:hover { color: #fbbf24; }
+
+/* ── Settings select (microphone dropdown) ────────────────────────── */
+.settings-select {
+  width: 100%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  color: white;
+  font-size: 11px;
+  padding: 5px 9px;
+  outline: none;
+  cursor: pointer;
+}
+.settings-select option {
+  background: #1a1a2e;
+  color: white;
+}
+
+/* ── Tag list editor ──────────────────────────────────────────────── */
+.tag-list-editor {
+  width: 100%;
+}
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+  min-height: 20px;
+}
+.tag-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 2px 6px 2px 8px;
+  gap: 4px;
+}
+.tag-text {
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tag-remove {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.3);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.tag-remove:hover {
+  background: rgba(239,68,68,0.3);
+  color: #ef4444;
+}
+.tag-input-row {
+  display: flex;
+  gap: 4px;
+}
+.tag-input {
+  flex: 1;
+  font-size: 10px !important;
+  padding: 4px 8px !important;
+}
+.tag-add-btn {
+  background: rgba(251,191,36,0.15);
+  border: 1px solid rgba(251,191,36,0.3);
+  color: #fbbf24;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 26px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.tag-add-btn:hover:not(:disabled) { background: rgba(251,191,36,0.3); }
+.tag-add-btn:disabled { opacity: 0.3; cursor: default; }
+
+/* ── Active debug button ──────────────────────────────────────────── */
+.icon-btn-active {
+  background: rgba(251,191,36,0.2) !important;
+  color: #fbbf24 !important;
+}
+
+/* ── Mic starting hint (small, non-blocking) ──────────────────────── */
+.mic-starting-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  padding: 4px 10px 6px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.3px;
+}
+.mic-starting-dot {
+  font-size: 9px;
+  animation: dotPulse 1.4s ease-in-out infinite;
+  color: #6b7280;
+}
+
+/* ── Mic error hint (small, at bottom, not full-screen blocking) ──── */
+.mic-error-hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px 7px;
+  gap: 8px;
+  border-top: 1px solid rgba(239,68,68,0.15);
+  z-index: 1;
+}
+.mic-error-msg {
+  font-size: 10px;
+  color: rgba(239,68,68,0.8);
+  font-weight: 500;
+}
+.mic-fallback-btn {
+  background: rgba(251,191,36,0.12);
+  border: 1px solid rgba(251,191,36,0.25);
+  color: rgba(251,191,36,0.8);
+  border-radius: 5px;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 3px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.mic-fallback-btn:hover {
+  background: rgba(251,191,36,0.22);
+  color: #fbbf24;
+}
+
+/* ─── Console Vibrations & Shakes ───────────────────────────────────── */
+.widget-shake-1 {
+  animation: shakeSubtle 0.8s ease-in-out infinite alternate;
+}
+.widget-shake-2 {
+  animation: shakeMild 0.4s ease-in-out infinite alternate;
+}
+.widget-shake-3 {
+  animation: shakeStrong 0.22s ease-in-out infinite alternate;
+}
+.widget-shake-4 {
+  animation: shakeMaxAngriness 0.12s steps(2, end) infinite;
+}
+
+@keyframes shakeSubtle {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(1px, 0.5px); }
+}
+
+@keyframes shakeMild {
+  0%   { transform: translate(-1px, 0); }
+  50%  { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 1px); }
+}
+
+@keyframes shakeStrong {
+  0%   { transform: translate(-2px, 1px) rotate(-0.5deg); }
+  50%  { transform: translate(2px, -1px) rotate(0.5deg); }
+  100% { transform: translate(-1px, -1px) rotate(0deg); }
+}
+
+@keyframes shakeMaxAngriness {
+  0%   { transform: translate(-3px, 2px) rotate(-1deg); }
+  25%  { transform: translate(3px, -2px) rotate(1deg); }
+  50%  { transform: translate(-2px, -2px) rotate(0.5deg); }
+  75%  { transform: translate(2px, 2px) rotate(-0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Authentic Hardware Rumble Haptic Simulation */
+.console-vibrating {
+  animation: consoleVibrate 0.04s linear infinite, consoleRedFlash 0.3s ease-in-out infinite alternate !important;
+  box-shadow: 0 0 35px #dc2626, inset 0 0 15px rgba(220, 38, 38, 0.6) !important;
+}
+
+@keyframes consoleVibrate {
+  0%   { transform: translate(-4px, 3px); }
+  20%  { transform: translate(4px, -3px); }
+  40%  { transform: translate(-3px, -2px); }
+  60%  { transform: translate(3px, 2px); }
+  80%  { transform: translate(-2px, 1px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+@keyframes consoleRedFlash {
+  from { filter: brightness(1); }
+  to   { filter: brightness(1.25) contrast(1.15); }
+}
+
