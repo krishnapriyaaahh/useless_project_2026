@@ -94,11 +94,7 @@ You can set your name, aliases, urgency phrases, and detection settings from the
 # Screenshots (Add at least 3)
 Screenshot 2026-09-12 100901.png
 
-
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
+Screenshot 2026-09-12 100952.png
 
 ### Project Demo
 # Video
