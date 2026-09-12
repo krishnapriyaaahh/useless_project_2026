@@ -98,11 +98,8 @@ Screenshot 2026-09-12 100952.png
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+Screen Recording 2026-09-12 101524.mp4
 
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
 - Krishnapriya Rajeev : Worked on the project idea, UI design, React and Electron development, and putting the different parts of the project together.
