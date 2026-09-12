@@ -92,11 +92,9 @@ You can set your name, aliases, urgency phrases, and detection settings from the
 *Because “I didn't hear you” doesn't work anymore.*
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+Screenshot 2026-09-12 100901.png
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+
 
 ![Screenshot3](Add screenshot 3 here with proper name)
 *Add caption explaining what this shows*
